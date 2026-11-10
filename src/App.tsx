@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import { Grid } from '@mui/material';
 import HeaderUI from './components/HeaderUI';
@@ -5,6 +6,8 @@ import AlertUI from './components/AlertUI';
 import SelectorUI from './components/SelectorUI';
 
 function App() {
+    const [ciudad, setCiudad] = useState('');
+
     return (
         <Grid container spacing={5} sx={{ justifyContent: 'center', alignItems: 'center' }}>
 
@@ -21,10 +24,10 @@ function App() {
             </Grid>
             {/* Selector */}
             <Grid size={{ xs: 12, md: 3 }}>
-                <SelectorUI />
+                <SelectorUI value={ciudad} onChange={setCiudad} />
             </Grid>
             {/* Indicadores */}
-            <Grid size={{ xs: 12, md: 9 }}>Elemento: Indicadores</Grid>
+            <Grid size={{ xs: 12, md: 9 }}>Elemento: Indicadores {ciudad && `de ${ciudad}`}</Grid>
 
             {/* Gráfico */}
             <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
